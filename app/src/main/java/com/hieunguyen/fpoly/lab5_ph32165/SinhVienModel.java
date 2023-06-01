@@ -1,6 +1,8 @@
 package com.hieunguyen.fpoly.lab5_ph32165;
 
-public class SinhVienModel {
+import java.io.Serializable;
+
+public class SinhVienModel implements Serializable {
     public String coSo;
     public String hoTen;
     public String diaChi;

@@ -37,8 +37,18 @@ public class ActivityAddOrEditSV extends AppCompatActivity {
         lst.add(new School(R.drawable.hcmpoly,"FPoly Hồ Chí Minh"));
         lst.add(new School(R.drawable.ctpoly,"FPoly Cần Thơ"));
 
+        SinhVienModel svModel = (SinhVienModel) getIntent().getSerializableExtra(ActivityBai2.KEY_SV_MODEL);
+
         SchoolAdapter adapter = new SchoolAdapter(lst, ActivityAddOrEditSV.this);
         sp.setAdapter(adapter);
+
+        if (svModel != null) { // sua sinh vien
+            edtName.setText(svModel.hoTen);
+            edtAddress.setText(svModel.diaChi);
+
+            int position = lst.indexOf(svModel.coSo);
+            sp.setSelection(position);
+        }
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -68,4 +68,45 @@ public class ActivityBai2 extends AppCompatActivity {
         lst.remove(index);
         fill();
     }
+
+    public static final String KEY_SV_MODEL = "sv_model";
+
+    ActivityResultLauncher<Intent> goToEditSV = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent i = result.getData();
+                        Bundle b = i.getExtras();
+                        String cs = b.getString(ActivityAddOrEditSV.KEY_COSO);
+                        //Log.d("coso", "nhan " + cs);
+                        String ten = b.getString(ActivityAddOrEditSV.KEY_TEN_SV);
+                        String dc = b.getString(ActivityAddOrEditSV.KEY_DIA_CHI);
+
+                        svModel.hoTen = ten;
+                        svModel.diaChi = dc;
+                        svModel.coSo = cs;
+
+                        //lst.add(new SinhVienModel(cs, ten, dc));
+                        fill();
+                    }
+                }
+            }
+    );
+
+    private SinhVienModel svModel;
+
+    public void updateSV(int position) {
+
+        Intent intent = new Intent(ActivityBai2.this, ActivityAddOrEditSV.class);
+
+        svModel = lst.get(position);
+        intent.putExtra(KEY_SV_MODEL, svModel);
+
+
+        goToEditSV.launch(intent);
+
+
+    }
 }

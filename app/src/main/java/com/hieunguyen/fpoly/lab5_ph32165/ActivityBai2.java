@@ -8,17 +8,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Bai2 extends AppCompatActivity {
+public class ActivityBai2 extends AppCompatActivity {
     Button btThemMoi;
     ListView lstview;
-    ArrayList<ListSV> lst = new ArrayList<>();
+    ArrayList<SinhVienModel> lst = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +34,33 @@ public class Bai2 extends AppCompatActivity {
                         if (result.getResultCode() == RESULT_OK) {
                             Intent i = result.getData();
                             Bundle b = i.getExtras();
-                            String cs = b.getString("coso");
-                            Log.d("coso", "nhan " + cs);
-                            String ten = b.getString("ten");
-                            String dc = b.getString("diachi");
-                            lst.add(new ListSV(cs, ten, dc));
+                            String cs = b.getString(ActivityAddOrEditSV.KEY_COSO);
+                            //Log.d("coso", "nhan " + cs);
+                            String ten = b.getString(ActivityAddOrEditSV.KEY_TEN_SV);
+                            String dc = b.getString(ActivityAddOrEditSV.KEY_DIA_CHI);
+                            lst.add(new SinhVienModel(cs, ten, dc));
                             fill();
                         }
                     }
                 }
         );
 
-        lst.add(new ListSV("FPoly Hà Nội", "Nguyễn Văn Dũng", "Lào Cai"));
-        lst.add(new ListSV("FPoly Đà Nẵng", "Nguyễn Tiến Anh", "Quảng Nam"));
-        lst.add(new ListSV("FPoly Tây Nguyên", "Trần Tiến Đạt", "Đăk Lăk"));
+        lst.add(new SinhVienModel("FPoly Hà Nội", "Nguyễn Văn Dũng", "Lào Cai"));
+        lst.add(new SinhVienModel("FPoly Đà Nẵng", "Nguyễn Tiến Anh", "Quảng Nam"));
+        lst.add(new SinhVienModel("FPoly Tây Nguyên", "Trần Tiến Đạt", "Đăk Lăk"));
         fill();
 
         btThemMoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Bai2.this, MainActivity.class);
+                Intent i = new Intent(ActivityBai2.this, ActivityAddOrEditSV.class);
                 nhan.launch(i);
             }
         });
     }
 
     public void fill() {
-        ListSVAdapter adapter = new ListSVAdapter(lst, Bai2.this);
+        SinhVienAdapter adapter = new SinhVienAdapter(lst, ActivityBai2.this);
         lstview.setAdapter(adapter);
     }
 

@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.google.android.material.textfield.TextInputEditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityAddOrEditSV extends AppCompatActivity {
     Spinner sp ;
     TextView edtName, edtAddress;
     Button btSubmit;
+
+    public static final String KEY_COSO = "coso";
+    public static final String KEY_TEN_SV = "ten";
+    public static final String KEY_DIA_CHI = "diachi";
 
     ArrayList<School> lst = new ArrayList<>();
     @Override
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         lst.add(new School(R.drawable.hcmpoly,"FPoly Hồ Chí Minh"));
         lst.add(new School(R.drawable.ctpoly,"FPoly Cần Thơ"));
 
-        SchoolAdapter adapter = new SchoolAdapter(lst,MainActivity.this);
+        SchoolAdapter adapter = new SchoolAdapter(lst, ActivityAddOrEditSV.this);
         sp.setAdapter(adapter);
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
@@ -47,17 +49,25 @@ public class MainActivity extends AppCompatActivity {
                 String name = edtName.getText().toString();
                 String adr = edtAddress.getText().toString();
 
-                Intent i = new Intent();
-                Bundle b = new Bundle();
+                if (name.trim().equals("")) {
+                    Toast.makeText(ActivityAddOrEditSV.this, "Tên SV không được để trống!", Toast.LENGTH_SHORT).show();
+                } else if (adr.trim().equals("")) {
+                    Toast.makeText(ActivityAddOrEditSV.this, "Địa chỉ không được để trống!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent();
+                    Bundle b = new Bundle();
 
-                b.putString("coso",cs);
-                Log.d("coso", cs);
+                    b.putString(KEY_COSO,cs);
+                    //Log.d("coso", cs);
 
-                b.putString("ten",name);
-                b.putString("diachi",adr);
-                i.putExtras(b);
-                setResult(RESULT_OK,i);
-                finish();
+                    b.putString(KEY_TEN_SV,name);
+                    b.putString(KEY_DIA_CHI,adr);
+                    i.putExtras(b);
+                    setResult(RESULT_OK,i);
+                    finish();
+                }
+
+
             }
         });
     }

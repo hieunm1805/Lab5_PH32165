@@ -8,14 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Bai4_a extends AppCompatActivity {
+public class ActivityBai4_a extends AppCompatActivity {
 
     private static final String Tag = "dangnhap";
 
@@ -49,7 +48,7 @@ public class Bai4_a extends AppCompatActivity {
         btndangki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Bai4_a.this, Bai4_b.class);
+                Intent i = new Intent(ActivityBai4_a.this, ActivityBai4_b.class);
                 startActivity(i);
             }
         });
@@ -61,11 +60,11 @@ public class Bai4_a extends AppCompatActivity {
                 String u = lay.getString("Username", "");
                 String p = lay.getString("password", "");
                 if (txtname.getText().toString().equals(u) && txtpass.getText().toString().equals(p)) {
-                    Intent i = new Intent(Bai4_a.this, Bai2.class);
+                    Intent i = new Intent(ActivityBai4_a.this, ActivityBai2.class);
                     startActivity(i);
-                    Toast.makeText(Bai4_a.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityBai4_a.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Bai4_a.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityBai4_a.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
         });

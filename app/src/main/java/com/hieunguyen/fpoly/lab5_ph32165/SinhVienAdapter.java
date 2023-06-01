@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListSVAdapter extends BaseAdapter {
-    ArrayList<ListSV> list;
+public class SinhVienAdapter extends BaseAdapter {
+    ArrayList<SinhVienModel> list;
     Context c;
 
-    public ListSVAdapter(ArrayList<ListSV> list, Context c) {
+    public SinhVienAdapter(ArrayList<SinhVienModel> list, Context c) {
         this.list = list;
         this.c = c;
     }
@@ -36,7 +36,7 @@ public class ListSVAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inf = ((Bai2)c).getLayoutInflater();
+        LayoutInflater inf = ((ActivityBai2)c).getLayoutInflater();
         convertView = inf.inflate(R.layout.item_listview,null);
 
         TextView cs = convertView.findViewById(R.id.tvCS);
@@ -52,7 +52,7 @@ public class ListSVAdapter extends BaseAdapter {
         btdelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Bai2)c).deleteSV(position);
+                ((ActivityBai2)c).deleteSV(position);
             }
         });
 

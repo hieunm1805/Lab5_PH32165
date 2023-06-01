@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Bai4_b extends AppCompatActivity {
+public class ActivityBai4_b extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class Bai4_b extends AppCompatActivity {
                 String pass = txtpass.getText().toString();
                 String confirm = txtconfirm.getText().toString();
                 if (name.equals("") || pass.equals("") || confirm.equals("") || !pass.equals(confirm)) {
-                    Toast.makeText(Bai4_b.this, "Dữ liệu sai", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityBai4_b.this, "Dữ liệu sai", Toast.LENGTH_SHORT).show();
                 } else {
                     SharedPreferences data = getSharedPreferences("abc", MODE_PRIVATE);
                     SharedPreferences.Editor ed = data.edit();

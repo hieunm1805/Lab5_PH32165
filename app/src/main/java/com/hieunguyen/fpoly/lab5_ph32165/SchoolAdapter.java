@@ -37,7 +37,7 @@ public class SchoolAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inf = ((MainActivity) c).getLayoutInflater();
+        LayoutInflater inf = ((ActivityAddOrEditSV) c).getLayoutInflater();
         convertView = inf.inflate(R.layout.item_spinner, null);
 
         ImageView img = convertView.findViewById(R.id.imageView);

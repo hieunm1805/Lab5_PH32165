@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Lab5_PH32165" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorOnPrimary">#ffffff</item>
     </style>
 
     <style name="Theme.Lab5_PH32165" parent="Base.Theme.Lab5_PH32165" />

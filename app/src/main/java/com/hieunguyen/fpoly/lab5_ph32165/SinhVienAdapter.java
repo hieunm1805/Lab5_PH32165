@@ -63,6 +63,13 @@ public class SinhVienAdapter extends BaseAdapter {
             }
         });
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ActivityBai2)c).updateSV(position);
+            }
+        });
+
         return convertView;
     }
 }

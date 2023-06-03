@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActivityBai2">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5"
+        app:title="Home"
+        android:id="@+id/toolbar"/>
+
     <EditText
         android:id="@+id/button2"
         android:layout_width="match_parent"
